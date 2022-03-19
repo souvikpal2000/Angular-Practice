@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Angular App</title>
+	</head>
+	<body>
+		<div class="headerContainer">
+		<h1 class="heading">{{title}}</h1>
+		</div>
+		<div class="bodyContainer">
+			<div class="passwordLength">
+				Enter Length  
+				<input type="text" (input)="setLength($event)"/>
+			</div>
+			<div class="buttons">
+				<div class="wantLetters">
+					Use Letters 
+					<input type="checkbox" (change)="wantLetters()"/>
+				</div>
+				<div class="wantNumbers">
+					Use Numbers
+					<input type="checkbox" (change)="wantNumbers()" />
+				</div>
+				<div class="wantSpecialChar">
+					Use Special Characters
+					<input type="checkbox" (change)="wantSpecialChar()" />
+				</div>
+				<div class="generate">
+					<input 
+						type="button" value="Generate" 
+						[disabled]="!(includeLength && (includeLetters || includeNumbers || includeSpecial))" 
+						(click)="generatePassword()"
+					/>
+				</div>
+			</div>
+			<div class="password" *ngIf="password">
+				Your Password 
+				<input type="text" [value]="password"/>
+			</div>
+		</div>
+	</body>
+</html>
