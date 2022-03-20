@@ -10,7 +10,6 @@ export class AppComponent {
 
 	password  = '';
 	length = 0;
-	includeLength = false;
 	includeLetters = false;
 	includeNumbers = false;
 	includeSpecial = false;
@@ -19,7 +18,6 @@ export class AppComponent {
 		const parsedValue = parseInt((value.target as HTMLInputElement).value);
 		if(isNaN(parsedValue) == false){
 			this.length = parsedValue;
-			this.includeLength = true;
 		}
 	}
 	wantLetters = () => {
