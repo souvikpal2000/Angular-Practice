@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bulma/css/bulma.css'; 
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.appContainer{
+    width: 100%;
+}

@@ -1,0 +1,16 @@
+:host{
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+    row-gap: 3rem;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+@media only screen and (max-width: 600px){
+    :host{
+        grid-template-columns: auto;
+    }
+}
