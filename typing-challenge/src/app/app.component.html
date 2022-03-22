@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="headerContainer">
+    <h1>Typing Challenge</h1>
+  </div>
+  <div class="paragraphContainer">
+    <p>
+      <span *ngFor="let letter of text.split(''); let i=index" 
+            [class]="decideClass(letter,matchedText[i])">{{letter}}</span>
+    </p>
+  </div>
+  <div class="inputContainer">
+    <textarea (input)="inputText($event)"></textarea>
+    <!-- <input type="text" /> -->
+  </div>
+  <div class="success" *ngIf="text === matchedText">
+    <h2>SUCCESS!!</h2>
+  </div>
+</div>
