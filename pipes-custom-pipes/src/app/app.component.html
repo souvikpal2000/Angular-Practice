@@ -1,0 +1,48 @@
+<div class="container row col-6">
+  <div class="headerContainer">
+    <h3>Mastering Pipes</h3>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Full Name</label>
+    <input type="text" class="form-control" (input)="onChangeInput($event)"/>
+  </div>
+  <div class="col-md-6">  
+    <label class="form-label"><b>Full Name</b></label><br>
+    {{inputText | titlecase }}
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Date</label>
+    <input type="date" class="form-control" (input)="onChangeDate($event)"/>
+  </div>
+  <div class="col-md-6">  
+    <label class="form-label"><b>Date</b></label><br>
+    {{inputDate | date:'EEEE, MMMM d, y' }}
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Amount</label>
+    <input type="text" class="form-control" (input)="onChangeAmount($event)"/>
+  </div>
+  <div class="col-md-6">  
+    <label class="form-label"><b>Amount</b></label><br>
+    {{inputAmount | currency:'EUR' }}
+  </div>
+  <!-- Custom Piping -->
+  <div class="col-md-6">
+    <label class="form-label">Miles</label>
+    <input type="text" class="form-control" (input)="onChangeDistance($event)"/>
+  </div>
+  <div class="col-md-2">  
+    <label class="form-label"><b>Kilometer</b></label><br>
+    {{inputDistance | convert:'km' }}
+  </div>
+  <div class="col-md-2">  
+    <label class="form-label"><b>Meter</b></label><br>
+    {{inputDistance | convert:'m' }}
+  </div>
+  <div class="col-md-2">  
+    <label class="form-label"><b>Centimeter</b></label><br>
+    {{inputDistance | convert:'cm' }}
+  </div>
+</div>
