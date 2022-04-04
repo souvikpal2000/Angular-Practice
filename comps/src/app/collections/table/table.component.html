@@ -1,0 +1,14 @@
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th *ngFor="let head of header">{{head}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of data">
+            <td>{{d['name']}}</td>
+            <td>{{d['company']}}</td>
+            <td>{{d['salary']}}</td>
+        </tr>
+    </tbody>
+  </table>
