@@ -6,3 +6,4 @@
 4. Pipes & Custom Pipes
 5. Pagination 
 6. Routing
+7. Advanced Component
