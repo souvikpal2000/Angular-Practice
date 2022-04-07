@@ -9,7 +9,7 @@ import { Data } from '@angular/router';
 export class TableComponent implements OnInit {
 
   @Input() header: string[]=[];
-  @Input() data: Data[]=[];
+  @Input() data: any;
   
   constructor() { }
 

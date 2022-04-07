@@ -1,0 +1,12 @@
+<div class="ui dimmer visible active" (click)="closeModal()">
+  <div class="ui modal visible active" (click)="$event.stopPropagation()">
+    <i class="close icon" (click)="closeModal()"></i>
+    <ng-content select="[header]"></ng-content>
+    <ng-content></ng-content>
+    <div class="actions">
+      <div class="ui positive right button" (click)="closeModal()">
+        Reusable Button
+      </div>
+    </div>
+  </div>
+</div>

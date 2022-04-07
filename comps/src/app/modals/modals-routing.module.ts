@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModalsHomeComponent } from './modals-home/modals-home.component';
 
 const routes: Routes = [
-  {path:"modals", component: ModalsHomeComponent}
+  {path:"", component: ModalsHomeComponent}
 ];
 
 @NgModule({

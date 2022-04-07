@@ -1,1 +1,15 @@
-<p>modals-home works!</p>
+<app-divider>Modal Component</app-divider>
+<button (click)="onClick(true)">Show Modal</button>
+<app-mods *ngIf="modalOpen" (sender)="onClick($event)">
+    <div class="header" header>
+        Reusable Header
+    </div>
+    <div class="content">
+        <div class="description">
+          <p>Reusable Description</p>
+        </div>
+    </div>
+</app-mods>
+<br><br>
+<app-divider>Accordian</app-divider>
+<app-accordian [data]="accordian"></app-accordian>
