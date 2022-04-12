@@ -7,3 +7,4 @@
 5. Pagination 
 6. Routing
 7. Advanced Component
+8. Wikipedia Search App (Communication between Child<->Parent)
