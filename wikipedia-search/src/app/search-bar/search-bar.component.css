@@ -1,0 +1,9 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+input{
+    width: 20rem;
+}

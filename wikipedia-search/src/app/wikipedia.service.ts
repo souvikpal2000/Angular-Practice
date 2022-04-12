@@ -1,13 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WikipediaService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  onSearch = (term: string): string => {
-    return "I'm Wikipedia Search Result";
+  onSearch = (term: string) : Observable<any> => {
+    return this.httpClient.get('https://en.wikipedia.org/w/api.php', {
+      params: {
+        action: "query",
+        format: "json",
+        list: "search",
+        utf8: "1",
+        srsearch: term,
+        origin: "*"
+      }
+    })
   }
 }

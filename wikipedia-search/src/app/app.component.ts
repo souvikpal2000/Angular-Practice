@@ -1,11 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { WikipediaService } from './wikipedia.service';
 
-@Injectable({providedIn:"root"})
-class Car{
-  color = "red";
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,10 +9,14 @@ class Car{
 export class AppComponent {
   title = 'wikipedia-search';
 
-  constructor(private wikipedia: WikipediaService, private car: Car) {}
+  pages = [];
+
+  constructor(private wikipedia: WikipediaService) {}
 
   onTerm = (event: string) => {
-    const result = this.wikipedia.onSearch(event);
-    console.log(result+" "+this.car.color);
+    const result = this.wikipedia.onSearch(event).subscribe((response) => {
+      this.pages = response.query.search;
+      //console.log(this.pages)
+    });
   }
 }
