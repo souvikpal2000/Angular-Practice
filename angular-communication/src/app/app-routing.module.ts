@@ -6,7 +6,8 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { SignupModule } from './signup/signup.module';
 
 const routes: Routes = [
-  {path: "", loadChildren: () => HomeModule},
+  {path: "", redirectTo: "home", pathMatch: "full" },  
+  {path: "home", loadChildren: () => HomeModule},
   {path: "signup", loadChildren: () => SignupModule},
   {path: "login", loadChildren: () => LoginModule},
   {path: "**", loadChildren: () => PageNotFoundModule}

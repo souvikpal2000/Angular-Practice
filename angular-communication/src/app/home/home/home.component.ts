@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,13 @@ export class HomeComponent implements OnInit {
 
   username = '';
 
-  constructor(private cookie: CookieService) { }
+  constructor(private service: DataService) { }
 
-  ngOnInit(): void {
-    this.username = this.cookie.get("username");
+  ngOnInit(): void {}
+
+  loggedIn = () => {
+    this.username = this.service.username;
+    return this.username;
   }
 
 }

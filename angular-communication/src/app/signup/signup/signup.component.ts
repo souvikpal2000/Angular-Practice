@@ -21,6 +21,9 @@ export class SignupComponent implements OnInit {
 
   inputPassword = (event: Event) => {
     this.password = (event.target as HTMLInputElement).value;
+    if(!this.password){
+      this.alertMessage = '';
+    }
   }
 
   confirmPassword = (event: Event) => {
@@ -35,6 +38,26 @@ export class SignupComponent implements OnInit {
   }
 
   onClickSubmit = (form: NgForm) => {
+    if(form.value.password !== form.value.confirmpassword){
+      this.alertMessage = "Password doesn't Match!!!";
+      this.status = "danger";
+      return;
+    }
+    
+    let flag = 0;
+    for(let i=0; i<this.service.users.length; i++){
+      if(this.service.users[i].username === form.value.username){
+        flag = 1;
+        break;
+      }
+    }
+
+    if(flag == 1){
+      this.alertMessage = "This Username is Already Registered!!!";
+      this.status = "danger";
+      return;
+    }
+
     const user = {
       username: form.value.username,
       password: form.value.password
@@ -47,6 +70,8 @@ export class SignupComponent implements OnInit {
 
     this.alertMessage = "User Registered Successfully!!!";
     this.status = "success";
+    this.password = '';
+    form.reset();
   }
 
 }

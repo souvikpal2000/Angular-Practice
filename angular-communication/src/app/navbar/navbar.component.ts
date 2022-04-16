@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { DataService } from '../data.service';
 
@@ -9,22 +9,16 @@ import { DataService } from '../data.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  constructor(private service: DataService, private router: Router) { }
 
-  loggedIn:boolean = false;
+  ngOnInit(): void {}
 
-  constructor(private service: DataService, private cookie: CookieService, private router: Router) { }
-
-  ngOnInit(): void {
-    if(this.cookie.get("username")){
-      this.loggedIn = true;
-      this.service.loggedIn = this.loggedIn;
-    }
+  loggedIn = () => {
+    return this.service.username;
   }
 
   logOut = () => {
-    this.cookie.delete("username");
-    this.router.navigate(['/']).then(() => {
-      window.location.reload();
-    })
+    this.service.username = '';
+    this.router.navigate(['/home'])
   }
 }
