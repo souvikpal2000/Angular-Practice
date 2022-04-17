@@ -30,9 +30,12 @@ export class SignupComponent implements OnInit {
     this.confirmPass = (event.target as HTMLInputElement).value;
     if(this.confirmPass !== this.password){
       this.alertMessage = "Password doesn't Match!!!";
-      this.status = "danger";
+      this.status = "red";
     }
     else if(this.confirmPass === this.password){
+      this.alertMessage = '';
+    }
+    if(this.confirmPass.length == 0){
       this.alertMessage = '';
     }
   }
@@ -40,7 +43,7 @@ export class SignupComponent implements OnInit {
   onClickSubmit = (form: NgForm) => {
     if(form.value.password !== form.value.confirmpassword){
       this.alertMessage = "Password doesn't Match!!!";
-      this.status = "danger";
+      this.status = "red";
       return;
     }
     
@@ -54,7 +57,7 @@ export class SignupComponent implements OnInit {
 
     if(flag == 1){
       this.alertMessage = "This Username is Already Registered!!!";
-      this.status = "danger";
+      this.status = "red";
       return;
     }
 
@@ -69,9 +72,12 @@ export class SignupComponent implements OnInit {
     ];
 
     this.alertMessage = "User Registered Successfully!!!";
-    this.status = "success";
+    this.status = "green";
     this.password = '';
     form.reset();
   }
 
+  closeMessage = () => {
+    this.alertMessage = '';
+  }
 }

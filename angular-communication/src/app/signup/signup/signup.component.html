@@ -1,6 +1,9 @@
 <app-header>Signup</app-header>
-<div *ngIf="alertMessage" class="alert">
-    <p [ngClass]="status">{{alertMessage}}</p>
+<div *ngIf="alertMessage" class="ui message" [ngClass]="status">
+    <div class="content">
+        <p>{{alertMessage}}</p>
+        <i class="close icon" (click)="closeMessage()"></i>
+    </div>
 </div>
 <form class="ui form" method="POST" action="/signup" #form="ngForm" (ngSubmit)="onClickSubmit(form)">
     <div class="five wide field">
@@ -18,5 +21,5 @@
         <input type="password" name="confirmpassword" placeholder="Confirm Password" (input)="confirmPassword($event)" ngModel>
     </div>
 
-    <button class="ui button" type="submit">Signup</button>
+    <button class="positive ui button" type="submit">Signup</button>
 </form>

@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     if(containUser == 0){
       this.alertMessage = "Username is not Registered!!!";
-      this.status = "danger";
+      this.status = "red";
     }
     else{
       if(this.service.users[position].password === password){
@@ -45,8 +45,12 @@ export class LoginComponent implements OnInit {
       }
       else{
         this.alertMessage = "Password Incorrect!!!";
-        this.status = "danger";
+        this.status = "red";
       }
     }
+  }
+  
+  closeMessage = () => {
+    this.alertMessage = '';
   }
 }

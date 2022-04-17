@@ -1,6 +1,13 @@
-.danger{
-    color: red;
+.content{
+    display: flex;
+    justify-content: space-between;
 }
-.alert{
-    padding: 0.5rem 0rem 1rem 0rem;
+p{
+    margin: 0 !important;
+}
+.message{
+    width: 25rem !important;   
+}
+i{
+    cursor: pointer;
 }

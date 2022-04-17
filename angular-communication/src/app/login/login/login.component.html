@@ -1,6 +1,9 @@
 <app-header>Login</app-header>
-<div *ngIf="alertMessage" class="alert">
-    <p [ngClass]="status">{{alertMessage}}</p>
+<div *ngIf="alertMessage" class="ui message" [ngClass]="status">
+    <div class="content">
+        <p>{{alertMessage}}</p>
+        <i class="close icon" (click)="closeMessage()"></i>
+    </div>
 </div>
 <form class="ui form" #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="five wide field">
@@ -12,5 +15,5 @@
         <input type="password" name="password" placeholder="Password" ngModel>
     </div>
 
-    <button class="ui button" type="submit">Login</button>
+    <button class="positive ui button" type="submit">Login</button>
 </form>

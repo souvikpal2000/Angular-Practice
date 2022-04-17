@@ -1,13 +1,13 @@
 <div class="ui secondary pointing menu">
-    <a routerLink="home"  routerLinkActive="active">Home</a>
+    <a routerLink="home"  routerLinkActive="active" class="item">Home</a>
     <div class="menus">
         <div *ngIf="loggedIn(); then showlogout else signuplogin"></div>
         <ng-template #signuplogin>
-            <a routerLink="signup" routerLinkActive="active">Signup</a>
-            <a routerLink="login"  routerLinkActive="active">Login</a>
+            <a routerLink="signup" routerLinkActive="active" class="item">Signup</a>
+            <a routerLink="login"  routerLinkActive="active" class="item">Login</a>
         </ng-template>
         <ng-template #showlogout>
-            <a routerLink="" (click)="logOut()">Logout</a>
+            <a routerLink="" class="item" (click)="logOut()">Logout</a>
         </ng-template>
     </div>
 </div>
