@@ -1,0 +1,30 @@
+<app-header>Users Data</app-header>
+<div *ngIf="containUsers(); then showTable else dontShow"></div>
+<ng-template #showTable>
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th class="username">Username</th>
+                <th class="password">Password</th>
+                <th class="action">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i=index">
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td>
+                    <div class="buttons">
+                        <button class="negative ui button" (click)="deleteUser(i)">Delete</button>
+                        <a class="ui blue button" routerLink="updateuser" (click)="updateUser(i)">Update</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+<ng-template #dontShow>
+    <p>No Data Found!!!</p>
+</ng-template>
+
+<router-outlet></router-outlet>

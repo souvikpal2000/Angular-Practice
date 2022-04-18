@@ -24,6 +24,17 @@ export class LoginComponent implements OnInit {
     const username = form.value.username;
     const password = form.value.password;
 
+    if(username === 'admin'){
+      if(password === 'admin'){
+        this.service.username = username;
+        this.router.navigate(['/home']);
+      }else{
+        this.alertMessage = "Password Incorrect!!!";
+        this.status = "red";
+      }
+      return;
+    }
+
     let containUser = 0;
     let position = 0;
     for(let i=0; i<this.service.users.length; i++){

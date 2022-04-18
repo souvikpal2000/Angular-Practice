@@ -9,11 +9,15 @@ import { DataService } from '../data.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  username = '';
+
   constructor(private service: DataService, private router: Router) { }
 
   ngOnInit(): void {}
 
   loggedIn = () => {
+    this.username = this.service.username;
     return this.service.username;
   }
 

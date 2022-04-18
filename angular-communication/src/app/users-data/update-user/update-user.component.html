@@ -1,0 +1,18 @@
+<ng-container *ngIf="getUserData()">
+    <app-header>Update User</app-header>
+    <form class="ui form" #form="ngForm" (ngSubmit)="updateUserData(form)">
+        <div class="five wide field">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Username" [(ngModel)]="username">
+        </div>
+        <div class="five wide field">
+            <label>Password</label>
+            <input type="text" name="password" placeholder="Password" [(ngModel)]="password">
+        </div>
+        
+        <div class="buttons">
+            <button class="ui blue button" type="submit">Update</button>
+            <a class="ui secondary button" (click)="closeUpdateForm()">Close</a>
+        </div>
+    </form>
+</ng-container>
