@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
+import { LoginService } from '../login.service';
 
 
 @Component({
@@ -14,9 +15,12 @@ export class LoginComponent implements OnInit {
   alertMessage = '';
   status = '';
 
-  constructor(private service: DataService, private router: Router) { }
+  constructor(private service: DataService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.getAllUser().subscribe((response) => {
+      this.service.users = response;
+    })
     console.log(this.service.users);
   }
 

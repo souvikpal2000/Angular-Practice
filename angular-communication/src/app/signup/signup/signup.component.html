@@ -5,20 +5,20 @@
         <i class="close icon" (click)="closeMessage()"></i>
     </div>
 </div>
-<form class="ui form" method="POST" action="/signup" #form="ngForm" (ngSubmit)="onClickSubmit(form)">
+<form class="ui form" method="POST" #form="ngForm" (ngSubmit)="onClickSubmit(form)" ngNativeValidate>
     <div class="five wide field">
         <label>Username</label>
-        <input type="text" name="username" placeholder="Username" ngModel>
+        <input type="text" name="username" placeholder="Username" required ngModel>
     </div>
     
     <div class="five wide field">
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password" (input)="inputPassword($event)" ngModel>
+        <input type="password" name="password" placeholder="Password" (input)="inputPassword($event)" required ngModel>
     </div>
 
     <div class="five wide field" *ngIf="password">
         <label>Confirm Password</label>
-        <input type="password" name="confirmpassword" placeholder="Confirm Password" (input)="confirmPassword($event)" ngModel>
+        <input type="password" name="confirmpassword" placeholder="Confirm Password" (input)="confirmPassword($event)" required ngModel>
     </div>
 
     <button class="positive ui button" type="submit">Signup</button>

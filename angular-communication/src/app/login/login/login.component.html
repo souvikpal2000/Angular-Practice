@@ -5,14 +5,14 @@
         <i class="close icon" (click)="closeMessage()"></i>
     </div>
 </div>
-<form class="ui form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+<form class="ui form" #form="ngForm" (ngSubmit)="onSubmit(form)" ngNativeValidate>
     <div class="five wide field">
         <label>Username</label>
-        <input type="text" name="username" placeholder="Username" ngModel>
+        <input type="text" name="username" placeholder="Username" required ngModel>
     </div>
     <div class="five wide field">
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password" ngModel>
+        <input type="password" name="password" placeholder="Password" required ngModel>
     </div>
 
     <button class="positive ui button" type="submit">Login</button>
