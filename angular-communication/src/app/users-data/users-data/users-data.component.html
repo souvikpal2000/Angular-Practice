@@ -15,8 +15,8 @@
                 <td>{{user.password}}</td>
                 <td>
                     <div class="buttons">
-                        <button class="negative ui button" (click)="deleteUser(i)">Delete</button>
-                        <a class="ui blue button" routerLink="updateuser" (click)="updateUser(i)">Update</a>
+                        <button class="negative ui button" (click)="deleteUser(user.username)">Delete</button>
+                        <a class="ui blue button" routerLink="updateuser" (click)="updateUser(user.username)">Update</a>
                     </div>
                 </td>
             </tr>

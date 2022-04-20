@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
+import { LoginService } from 'src/app/login/login.service';
+import { DeleteUpdateUserService } from '../delete-update-user.service';
 import { UserPositionService } from '../user-position.service';
 
 @Component({
@@ -12,7 +14,8 @@ export class UsersDataComponent implements OnInit {
 
   users:any;
 
-  constructor(private service : DataService, private user: UserPositionService, private router: Router) { }
+  constructor(private service : DataService, private user: UserPositionService, private router: Router,
+              private deleteupdateService: DeleteUpdateUserService) { }
 
   ngOnInit(): void {
     if(!this.service.username){
@@ -29,13 +32,19 @@ export class UsersDataComponent implements OnInit {
     }
   }
 
-  deleteUser = (i:number) => {
-    this.user.position = -1;
-    this.service.users.splice(i,1);
+  deleteUser = (username:string) => {
+    this.deleteupdateService.deleteUser(username).subscribe();
+    const index = this.service.users.findIndex((user:any) => {
+      return user.username === username;
+    })
+    this.service.users.splice(index,1);
   }
 
-  updateUser = (i:number) => {
-    this.user.position = i;
+  updateUser = (username:number) => {
+    const index = this.service.users.findIndex((user:any) => {
+      return user.username === username;
+    })
+    this.user.position = index;
   }
 
 }
