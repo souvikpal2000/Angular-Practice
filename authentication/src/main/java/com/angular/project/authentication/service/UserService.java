@@ -1,5 +1,9 @@
 package com.angular.project.authentication.service;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +27,17 @@ public class UserService {
 
 	public void addUser(Users u) {
 		repo.save(u);
+	}
+
+	public List<Users> getAllUsers() {
+		List<Users> users = repo.findAll();
+		return users;
+	}
+	
+	@Transactional
+	public void deleteUserByUsername(String username) {
+		repo.deleteUserByUsername(username);
+		
 	}
 
 }
