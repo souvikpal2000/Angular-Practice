@@ -14,5 +14,5 @@ public interface UserRepo extends JpaRepository<Users, Integer> {
 	@Modifying
 	@Query(nativeQuery = true, value="DELETE FROM users WHERE username=:username")
 	void deleteUserByUsername(String username);
-
+	
 }

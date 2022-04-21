@@ -39,5 +39,10 @@ public class UserService {
 		repo.deleteUserByUsername(username);
 		
 	}
+	
+	@Transactional
+	public void updateUserByUsername(Users u) {
+		repo.save(u);
+	}
 
 }

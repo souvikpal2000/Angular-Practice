@@ -43,4 +43,9 @@ public class UserController {
 	public void deleteUser(@PathVariable("username") String username) {
 		service.deleteUserByUsername(username);
 	}
+	
+	@PostMapping("/updateuser")
+	public void updateUser(@RequestBody Users u) {
+		service.updateUserByUsername(u);
+	}
 }
