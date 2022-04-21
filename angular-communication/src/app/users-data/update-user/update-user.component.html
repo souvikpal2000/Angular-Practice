@@ -1,9 +1,19 @@
-<ng-container *ngIf="getUserData()">
-    <app-header>Update User</app-header>
+<ng-container  *ngIf="getUserData()">
+    <div *ngIf="add(); then addUser else updateUser"></div>
+
+    <ng-template #addUser>
+        <app-header>Add User</app-header>
+    </ng-template>
+
+    <ng-template #updateUser>
+        <app-header>Update User</app-header>
+    </ng-template>
+
+    
     <form class="ui form" #form="ngForm" (ngSubmit)="updateUserData(form)">
         <div class="five wide field">
             <label>Username</label>
-            <input type="text" name="username" placeholder="Username" [(ngModel)]="username">
+            <input type="text" name="username" placeholder="Username" [(ngModel)]="username" (input)="checkUser($event)">
         </div>
         <div class="five wide field">
             <label>Password</label>
@@ -11,7 +21,14 @@
         </div>
         
         <div class="buttons">
-            <button class="ui blue button" type="submit">Update</button>
+            <div *ngIf="add(); then addBtn else updateBtn"></div>
+            <ng-template #addBtn>
+                <button class="ui blue button" type="submit">Add</button>
+            </ng-template>
+            <ng-template #updateBtn>
+                <button class="ui blue button" type="submit">Update</button>
+            </ng-template>
+            
             <a class="ui secondary button" (click)="closeUpdateForm()">Close</a>
         </div>
     </form>
