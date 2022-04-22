@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { DataService } from 'src/app/data.service';
 import { LoginService } from '../login.service';
 
@@ -15,13 +16,18 @@ export class LoginComponent implements OnInit {
   alertMessage = '';
   status = '';
 
-  constructor(private service: DataService, private router: Router, private loginService: LoginService) { }
+  constructor(  private service: DataService, private router: Router, private loginService: LoginService, 
+                private cookie: CookieService) { }
 
   ngOnInit(): void {
-    this.loginService.getAllUser().subscribe((response) => {
-      this.service.users = response;
-    })
-    console.log(this.service.users);
+    if(this.cookie.get("username")){
+      this.router.navigate(['/home']);
+    }else{
+      this.loginService.getAllUser().subscribe((response) => {
+        this.service.users = response;
+      })
+      console.log(this.service.users);
+    }
   }
 
   onSubmit = (form: NgForm) => {
@@ -30,7 +36,8 @@ export class LoginComponent implements OnInit {
 
     if(username === 'admin'){
       if(password === 'admin'){
-        this.service.username = username;
+        //this.service.username = username;
+        this.cookie.set("username", username);
         this.router.navigate(['/home']);
       }else{
         this.alertMessage = "Password Incorrect!!!";
@@ -55,7 +62,8 @@ export class LoginComponent implements OnInit {
     }
     else{
       if(this.service.users[position].password === password){
-        this.service.username = username;
+        //this.service.username = username;
+        this.cookie.set("username", username);
         this.router.navigate(['/home']);
       }
       else{

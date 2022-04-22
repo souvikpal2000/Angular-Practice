@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { DataService } from 'src/app/data.service';
 import { LoginService } from 'src/app/login/login.service';
 import { DeleteUpdateUserService } from '../delete-update-user.service';
@@ -15,11 +16,16 @@ export class UsersDataComponent implements OnInit {
   users:any;
 
   constructor(private service : DataService, private user: UserPositionService, private router: Router,
-              private deleteupdateService: DeleteUpdateUserService) { }
+              private deleteupdateService: DeleteUpdateUserService, 
+              private cookie: CookieService) { }
 
   ngOnInit(): void {
-    if(!this.service.username){
+    if(!this.cookie.get("username")){
       this.router.navigate(['/home']);
+    }else{
+      this.deleteupdateService.getAllUser().subscribe((response) => {
+        this.service.users = response;
+      })
     }
   }
 

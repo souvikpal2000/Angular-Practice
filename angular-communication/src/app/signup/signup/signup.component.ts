@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { DataService } from 'src/app/data.service';
 import { SignupService } from '../signup.service';
 import { User } from '../user';
@@ -16,9 +18,13 @@ export class SignupComponent implements OnInit {
   alertMessage = '';
   status='';
 
-  constructor(private service: DataService, private signupService: SignupService) { }
+  constructor(private service: DataService, private signupService: SignupService, private cookie: CookieService, 
+              private router: Router) { }
 
   ngOnInit(): void {
+    if(this.cookie.get("username")){
+      this.router.navigate(["/home"]);
+    }
   }
 
   inputPassword = (event: Event) => {

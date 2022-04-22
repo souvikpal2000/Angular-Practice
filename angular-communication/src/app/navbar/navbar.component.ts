@@ -12,17 +12,19 @@ export class NavbarComponent implements OnInit {
 
   username = '';
 
-  constructor(private service: DataService, private router: Router) { }
+  constructor(private service: DataService, private router: Router, private cookie: CookieService) { }
 
   ngOnInit(): void {}
 
   loggedIn = () => {
-    this.username = this.service.username;
-    return this.service.username;
+    //this.username = this.service.username;
+    this.username = this.cookie.get("username")
+    return this.username;
   }
 
   logOut = () => {
-    this.service.username = '';
-    this.router.navigate(['/home'])
+    //this.service.username = '';
+    this.cookie.delete("username");
+    this.router.navigate(['/home']);
   }
 }
