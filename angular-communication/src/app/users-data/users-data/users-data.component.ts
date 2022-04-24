@@ -20,7 +20,7 @@ export class UsersDataComponent implements OnInit {
               private cookie: CookieService) { }
 
   ngOnInit(): void {
-    if(!this.cookie.get("username")){
+    if(this.cookie.get("username") !== "admin"){
       this.router.navigate(['/home']);
     }else{
       this.deleteupdateService.getAllUser().subscribe((response) => {

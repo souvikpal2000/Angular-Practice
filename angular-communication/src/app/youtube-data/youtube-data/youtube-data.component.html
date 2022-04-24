@@ -1,0 +1,19 @@
+<app-header>Add Video</app-header>
+<div *ngIf="alertMessage" class="ui message" [ngClass]="status">
+    <div class="content">
+        <p>{{alertMessage}}</p>
+        <i class="close icon" (click)="closeMessage()"></i>
+    </div>
+</div>
+<form class="ui form" #form="ngForm" (ngSubmit)="onSubmit(form)" ngNativeValidate>
+    <div class="five wide field">
+        <label>Video Title</label>
+        <input type="text" name="title" placeholder="Video Title" required ngModel>
+    </div>
+    <div class="five wide field">
+        <label>Video Link</label>
+        <input type="password" name="Link" placeholder="Video Link" required ngModel>
+    </div>
+
+    <button class="positive ui button" type="submit">Add Video</button>
+</form>
