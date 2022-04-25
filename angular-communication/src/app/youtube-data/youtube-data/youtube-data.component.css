@@ -1,0 +1,16 @@
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+p{
+    margin: 0 !important;
+}
+.message{
+    width: 25rem !important;   
+}
+i{
+    cursor: pointer;
+}
+textarea{
+    resize: none !important;
+}

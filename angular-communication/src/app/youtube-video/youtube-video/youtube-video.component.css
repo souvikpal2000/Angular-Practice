@@ -1,0 +1,11 @@
+.videos{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.card{
+    margin: 0;
+}

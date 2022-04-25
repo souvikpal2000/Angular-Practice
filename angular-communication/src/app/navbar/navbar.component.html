@@ -8,6 +8,7 @@
         </ng-template>
         <ng-template #showlogout>
             <a routerLink="users" routerLinkActive="active" class="item" *ngIf="username === 'admin'">Users</a>
+            <a routerLink="videos" routerLinkActive="active" class="item">Videos</a>
             <a routerLink="add" routerLinkActive="active" class="item" *ngIf="username === 'admin'">Add Videos</a>
             <a class="item" (click)="logOut()">Logout</a>
         </ng-template>
