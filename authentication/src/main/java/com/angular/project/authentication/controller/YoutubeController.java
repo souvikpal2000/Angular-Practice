@@ -29,16 +29,12 @@ public class YoutubeController {
 	
 	@PostMapping("/addvideo")
 	public String addVideo(@RequestBody YoutubeLinks obj) {
-		String str = "https://youtu.be/";
-		int l = str.length();
-		//System.out.println(obj.getId().substring(l));
-		obj.setId(obj.getId().substring(l));
 		List<YoutubeLinks> list = service.checkVideo(obj.getId());
 		if(list.size() > 0) {
-			return "Video Available";
+			return "This Video Already Available!!!";
 		}else {
 			service.addVideo(obj);
-			return "Video Added";
+			return "Video Added Successfully!!!";
 		}
 	}
 	
