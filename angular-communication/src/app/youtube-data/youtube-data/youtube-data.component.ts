@@ -26,19 +26,33 @@ export class YoutubeDataComponent implements OnInit {
   onSubmit = async (form: NgForm) => {
     const url = form.value.url;
     const type = form.value.type;
-    const description = form.value.description;
+    let videoId = '';
+    if(url.includes("https://youtu.be/")){
+      const str = "https://youtu.be/";
+      const length = str.length;
+      videoId = url.substring(length);
+    }
+    else if(url.includes("https://www.youtube.com/watch?v=")){
+      const str = "https://www.youtube.com/watch?v=";
+      const length = str.length;
+      videoId = url.substring(length);
+    }
+    else{
+      this.alertMessage = "Please use Youtube Link";
+      this.status = "red";
+      return;
+    }
 
-    const str = "https://youtu.be/";
-    const length = str.length;
-    const videoId = url.substring(length);
     const apiKey = "AIzaSyDN4qiUmte8dl-561nTdFGFQJbAxavHCFA";
 
     const res = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet`);
     const data = await res.json();
     
     const channelName = data.items[0].snippet.channelTitle;
-    const videoTitle = data.items[0].snippet.title;
+    const videoTitle = data.items[0].snippet.title.substring(0,55) + " ...";
     const thumbnail = data.items[0].snippet.thumbnails.high.url;
+    const description = data.items[0].snippet.description.substring(0,70) + " ...";
+
     const youtube = new Youtube(videoId, videoTitle, channelName, thumbnail, type, description);
 
     //console.log(youtube);

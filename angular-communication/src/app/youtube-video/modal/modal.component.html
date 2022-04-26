@@ -1,0 +1,23 @@
+<div class="ui dimmer visible active" (click)="closeModal()">
+    <div class="ui modal visible active" (click)="$event.stopPropagation()">
+        <i class="close icon" (click)="closeModal()"></i>
+        <div class="header" header>Update Video Details</div>
+        <div class="content">
+            <form class="ui form" #form="ngForm" (ngSubmit)="updateVideoData(form, videoId)">
+                <div class="field">
+                    <label>Video Title</label>
+                    <input type="text" name="title" placeholder="Video Title" required [(ngModel)]="title">
+                </div>
+                <div class="field">
+                    <label>Video Type</label>
+                    <input type="text" name="type" placeholder="Video Type" required [(ngModel)]="type">
+                </div>
+                <div class="field">
+                    <label>Video Description</label>
+                    <textarea name="description" required [(ngModel)]="description"></textarea>
+                </div>
+                <button class="ui blue right button">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

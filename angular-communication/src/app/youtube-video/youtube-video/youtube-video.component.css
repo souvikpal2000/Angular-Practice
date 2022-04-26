@@ -1,6 +1,7 @@
 .videos{
     display: grid;
     grid-template-columns: auto auto auto;
+    row-gap: 2rem;
     justify-content: space-around;
     align-items: center;
     padding-top: 2rem;
