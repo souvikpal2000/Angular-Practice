@@ -17,6 +17,9 @@ export class YoutubeVideoComponent implements OnInit {
   type = '';
   id = '';
 
+  videoPlayer = false;
+  videoId = '';
+
   constructor(private service: ReaUpdDelVideoService, private cookie: CookieService, private el: ElementRef) { }
 
   ngOnInit(): void {
@@ -61,5 +64,14 @@ export class YoutubeVideoComponent implements OnInit {
 
   closeModal = () => {
     this.modal = false
+  }
+
+  playVideo = (videoId: string) => {
+    this.videoPlayer = true;
+    this.videoId = videoId;
+  }
+
+  closeVideo = () => {
+    this.videoPlayer = false;
   }
 }

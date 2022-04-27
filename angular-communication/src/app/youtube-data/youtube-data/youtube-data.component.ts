@@ -30,12 +30,12 @@ export class YoutubeDataComponent implements OnInit {
     if(url.includes("https://youtu.be/")){
       const str = "https://youtu.be/";
       const length = str.length;
-      videoId = url.substring(length);
+      videoId = url.substring(length, 28);
     }
     else if(url.includes("https://www.youtube.com/watch?v=")){
       const str = "https://www.youtube.com/watch?v=";
       const length = str.length;
-      videoId = url.substring(length);
+      videoId = url.substring(length, 43);
     }
     else{
       this.alertMessage = "Please use Youtube Link";

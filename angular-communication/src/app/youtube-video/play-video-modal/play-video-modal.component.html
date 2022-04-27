@@ -1,0 +1,8 @@
+<div class="ui dimmer visible active">
+    <div class="ui modal visible active" (click)="$event.stopPropagation()">
+        <i class="close icon" (click)="closeVideo()"></i>
+        <div class="content">
+            <iframe [src]="'https://www.youtube.com/embed/tgbNymZ7vqY'"></iframe>
+        </div>
+    </div>
+</div>

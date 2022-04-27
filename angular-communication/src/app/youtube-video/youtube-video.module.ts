@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReaUpdDelVideoService } from './rea-upd-del-video.service';
 import { ModalComponent } from './modal/modal.component';
 import { FormsModule } from '@angular/forms';
+import { PlayVideoModalComponent } from './play-video-modal/play-video-modal.component';
 
 
 @NgModule({
   declarations: [
     YoutubeVideoComponent,
-    ModalComponent
+    ModalComponent,
+    PlayVideoModalComponent
   ],
   imports: [
     CommonModule,

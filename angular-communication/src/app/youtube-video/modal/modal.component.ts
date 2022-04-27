@@ -48,6 +48,10 @@ export class ModalComponent implements OnInit {
     this.service.videos[index].type = form.value.type;
     this.service.videos[index].description = form.value.description;
 
+    this.service.updateVideo(videoId, form.value.title, form.value.type, form.value.description).subscribe((response) => {
+      console.log(response);
+    })
+
     this.sender.emit();
   }
 }

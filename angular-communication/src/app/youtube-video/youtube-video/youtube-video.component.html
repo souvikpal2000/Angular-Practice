@@ -2,7 +2,6 @@
 <ng-template #showVideos>
     <div class="videos">
         <div class="ui card" *ngFor="let video of videos">
-    
             <div class="image">
                 <a class="ui blue ribbon label" [ngClass]="video.type">{{video.type}}</a>
                 <img [src]="video.image">
@@ -16,14 +15,15 @@
                     {{video.description}}
                 </div>
             </div>
-            <div class="extra content">
-                <button class="positive ui button">Play</button>
+            <div class="extra content" *ngIf="username">
+                <button class="positive ui button" (click)="playVideo(video.id)">Play</button>
                 <button class="ui blue button" *ngIf="username === 'admin'" (click)="openModal(video.type, video.id)">Update</button>
                 <button class="negative ui button" *ngIf="username === 'admin'" (click)="deleteVideo(video.id)">Delete</button>
             </div>
         </div>
     </div>
     <app-modal *ngIf="modal" (sender)="closeModal()" [videoId]="id"></app-modal>
+    <app-play-video-modal *ngIf="videoPlayer" [videoId]="videoId" (sender)="closeVideo()"></app-play-video-modal>
 </ng-template>
 <ng-template #dontShow>
     <p>No Videos Available</p>
