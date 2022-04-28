@@ -16,5 +16,9 @@ public interface YoutubeRepo extends JpaRepository<YoutubeLinks, Integer> {
 	
 	@Query(nativeQuery = true, value="SELECT * FROM youtube WHERE id=:id")
 	List<YoutubeLinks> checkVideo(String id);
+	
+	@Modifying
+	@Query(nativeQuery = true, value="UPDATE youtube SET title=:title, type=:type, description=:description WHERE id=:id")
+	void updateVideoById(String id, String title, String type, String description);
 
 }

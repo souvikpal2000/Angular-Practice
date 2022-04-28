@@ -35,5 +35,10 @@ public class YoutubeService {
 		return list;
 	}
 	
+	@Transactional
+	public void updateVideo(String id, String title, String type, String description) {
+		repo.updateVideoById(id, title, type, description);
+	}
+	
 	
 }

@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.angular.project.authentication.entity.YoutubeLinks;
@@ -42,5 +44,13 @@ public class YoutubeController {
 	public String deleteVideo(@PathVariable("id") String id) {
 		service.deleteVideoById(id);
 		return "Video Deleted";
+	}
+	
+	@PutMapping("/updatevideo/{id}")
+	public String updateVideo(	@PathVariable("id") String id, @RequestParam("videoTitle") String title,
+								@RequestParam("videoType") String type, @RequestParam("videoDescription") String description) {
+		
+		service.updateVideo(id, title, type, description);
+		return "Video Details Updated";
 	}
 }
