@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-play-video-modal',
@@ -10,14 +10,16 @@ export class PlayVideoModalComponent implements OnInit {
 
   @Input() videoId = '';
   @Output() sender = new EventEmitter();
-  videoUrl: SafeUrl;
+  videoUrl: any;
 
-  constructor(private el: ElementRef, private sanitizer:DomSanitizer) { }
+  constructor(private el: ElementRef, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     //console.log(this.videoId);
-    this.videoUrl = this.sanitizer.bypassSecurityTrustUrl('https://www.youtube.com/embed/' + this.videoId);
+    const url = 'https://www.youtube.com/embed/' + this.videoId + "?autoplay=1";
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     document.body.appendChild(this.el.nativeElement);
+    return;
   }
 
   ngOnDestroy(){
