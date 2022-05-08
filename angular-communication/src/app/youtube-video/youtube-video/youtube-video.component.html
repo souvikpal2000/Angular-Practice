@@ -24,6 +24,18 @@
     </div>
     <app-modal *ngIf="modal" (sender)="closeModal()" [videoId]="id"></app-modal>
     <app-play-video-modal *ngIf="videoPlayer" [videoId]="videoId" (sender)="closeVideo()"></app-play-video-modal>
+
+    <div class="pagination">
+        <div>
+            <a>Prev</a>
+        </div>
+        <div *ngFor="let video of videos, let i = Math.ceil(videos.length/3)">
+            <a>{{i+1}}</a>
+        </div>
+        <div>
+            <a>Next</a>
+        </div> 
+    </div>
 </ng-template>
 <ng-template #dontShow>
     <p>No Videos Available</p>

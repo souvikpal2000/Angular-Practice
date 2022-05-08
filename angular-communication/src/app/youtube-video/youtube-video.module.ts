@@ -8,19 +8,23 @@ import { ReaUpdDelVideoService } from './rea-upd-del-video.service';
 import { ModalComponent } from './modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { PlayVideoModalComponent } from './play-video-modal/play-video-modal.component';
+import { DeferLoadModule } from '@trademe/ng-defer-load';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
   declarations: [
     YoutubeVideoComponent,
     ModalComponent,
-    PlayVideoModalComponent
+    PlayVideoModalComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
     YoutubeVideoRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DeferLoadModule
   ],
   providers: [ReaUpdDelVideoService]
 })

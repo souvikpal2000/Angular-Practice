@@ -2,7 +2,7 @@
     <div class="ui modal visible active" (click)="$event.stopPropagation()">
         <i class="close icon" (click)="closeVideo()"></i>
         <div class="content">
-            <iframe style="width: 100%; height: 30rem;" [src]="videoUrl" allow="autoplay"></iframe>
+            <iframe style="width: 100%; height: 30rem;" [src]="videoUrl" allow="autoplay" frameborder="0"></iframe>
         </div>
     </div>
 </div>
