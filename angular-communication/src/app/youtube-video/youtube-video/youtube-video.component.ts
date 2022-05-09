@@ -14,11 +14,15 @@ export class YoutubeVideoComponent implements OnInit {
   username = '';
   videos: Youtube[]=[];
   modal = false;
-  type = '';
+  //type = '';
   id = '';
 
   videoPlayer = false;
   videoId = '';
+
+  currentPage = 0;
+  start = this.currentPage + (this.currentPage * 3);
+  end = this.currentPage + 2;
 
   constructor(private service: ReaUpdDelVideoService, private cookie: CookieService, private el: ElementRef) { }
 
@@ -27,6 +31,7 @@ export class YoutubeVideoComponent implements OnInit {
       this.username = this.cookie.get("username");
     }
     this.getVideos();
+    //console.log(this.start+"-"+this.end)
   }
 
   getVideos = () => {
@@ -56,8 +61,8 @@ export class YoutubeVideoComponent implements OnInit {
     this.service.videos.splice(index,1);
   }
 
-  openModal = (type: string, id: string) => {
-    this.type = type;
+  openModal = (id: string) => {
+    //this.type = type;
     this.id = id;
     this.modal = true;
   }
@@ -73,5 +78,37 @@ export class YoutubeVideoComponent implements OnInit {
 
   closeVideo = () => {
     this.videoPlayer = false;
+  }
+
+  prevPage = () => {
+    this.currentPage = this.currentPage - 1;
+    this.start = (this.currentPage * 3);
+    this.end = this.start + 2;
+  }
+  nextPage = () => {
+    this.currentPage = this.currentPage + 1;
+    this.start = (this.currentPage * 3);
+    this.end = this.start + 2;
+    //console.log(this.start+"-"+this.end);
+  }
+  changePage = (i:number) => {
+    this.currentPage = i;
+    this.start = (this.currentPage * 3);
+    this.end = this.start + 2;
+  }
+  showNumber = (i:number) => {
+    if(i < Math.ceil(this.videos.length/3)){
+      return true;
+    }
+    return false;
+  }
+  checkLast = () => {
+    if(this.currentPage < Math.ceil(this.videos.length/3)-1){
+      return false;
+    }
+    return true;
+  }
+  checkWindow = (i:number) => {
+    return Math.abs(this.currentPage - i) < 2
   }
 }

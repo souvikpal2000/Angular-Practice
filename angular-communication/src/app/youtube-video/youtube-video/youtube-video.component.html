@@ -1,40 +1,48 @@
 <div *ngIf="checkLength(); then showVideos else dontShow"></div>
 <ng-template #showVideos>
-    <div class="videos">
-        <div class="ui card" *ngFor="let video of videos">
-            <div class="image">
-                <a class="ui blue ribbon label" [ngClass]="video.type">{{video.type}}</a>
-                <img [src]="video.image">
-            </div>
-            <div class="content">
-                <a class="header">{{video.title}}</a>
-                <div class="meta">
-                    <span class="date">{{video.channel}}</span>
+    <div class="container">
+        <div class="videos">
+            <ng-container *ngFor="let video of videos; let i=index">
+                <div class="ui card" *ngIf="i>=start && i<=end">
+                    <div class="image">
+                        <a class="ui blue ribbon label" [ngClass]="video.type">{{video.type}}</a>
+                        <img [src]="video.image">
+                    </div>
+                    <div class="content">
+                        <a class="header">{{video.title}}</a>
+                        <div class="meta">
+                            <span class="date">{{video.channel}}</span>
+                        </div>
+                        <div class="description">
+                            {{video.description}}
+                        </div>
+                    </div>
+                    <div class="extra content" *ngIf="username">
+                        <button class="positive ui button" (click)="playVideo(video.id)">Play</button>
+                        <button class="ui blue button" *ngIf="username === 'admin'" (click)="openModal(video.id)">Update</button>
+                        <button class="negative ui button" *ngIf="username === 'admin'" (click)="deleteVideo(video.id)">Delete</button>
+                    </div>
                 </div>
-                <div class="description">
-                    {{video.description}}
-                </div>
+            </ng-container>
+        </div>
+        <app-modal *ngIf="modal" (sender)="closeModal()" [videoId]="id"></app-modal>
+        <app-play-video-modal *ngIf="videoPlayer" [videoId]="videoId" (sender)="closeVideo()"></app-play-video-modal>
+    
+        <div class="pagination" *ngIf="videos.length > 3">
+            <div>
+                <a [ngClass]="{disabled: currentPage===0}" (click)="prevPage()">Prev</a>
             </div>
-            <div class="extra content" *ngIf="username">
-                <button class="positive ui button" (click)="playVideo(video.id)">Play</button>
-                <button class="ui blue button" *ngIf="username === 'admin'" (click)="openModal(video.type, video.id)">Update</button>
-                <button class="negative ui button" *ngIf="username === 'admin'" (click)="deleteVideo(video.id)">Delete</button>
-            </div>
+            <ng-container *ngFor="let video of videos, let i = index">
+                <ng-container *ngIf="showNumber(i)">
+                    <div [ngClass]="{active: currentPage===i}" *ngIf="checkWindow(i)">
+                        <a (click)="changePage(i)">{{i+1}}</a>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div>
+                <a [ngClass]="{disabled: checkLast()}" (click)="nextPage()">Next</a>
+            </div> 
         </div>
-    </div>
-    <app-modal *ngIf="modal" (sender)="closeModal()" [videoId]="id"></app-modal>
-    <app-play-video-modal *ngIf="videoPlayer" [videoId]="videoId" (sender)="closeVideo()"></app-play-video-modal>
-
-    <div class="pagination">
-        <div>
-            <a>Prev</a>
-        </div>
-        <div *ngFor="let video of videos, let i = Math.ceil(videos.length/3)">
-            <a>{{i+1}}</a>
-        </div>
-        <div>
-            <a>Next</a>
-        </div> 
     </div>
 </ng-template>
 <ng-template #dontShow>
