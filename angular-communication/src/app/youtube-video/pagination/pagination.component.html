@@ -1,1 +1,15 @@
-<p>pagination works!</p>
+<div class="pagination" *ngIf="videos.length > 3">
+    <div>
+        <a [ngClass]="{disabled: currentPage===0}" (click)="prevPage()">Prev</a>
+    </div>
+    <ng-container *ngFor="let video of videos, let i = index">
+        <ng-container *ngIf="showNumber(i)">
+            <div [ngClass]="{active: currentPage===i}" *ngIf="checkWindow(i)">
+                <a (click)="changePage(i)">{{i+1}}</a>
+            </div>
+        </ng-container>
+    </ng-container>
+    <div>
+        <a [ngClass]="{disabled: checkLast()}" (click)="nextPage()">Next</a>
+    </div> 
+</div>

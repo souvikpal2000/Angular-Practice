@@ -1,0 +1,22 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination div{
+    border: 1px solid #4183C4;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+a{
+    cursor: pointer;
+}
+.disabled{
+    color: grey;
+    pointer-events: none
+}
+.active{
+    background-color: #4183C4;
+}
+.active a{
+    color: white;
+}
