@@ -1,15 +1,21 @@
 <div class="pagination" *ngIf="videos.length > 3">
     <div>
-        <a [ngClass]="{disabled: currentPage===0}" (click)="prevPage()">Prev</a>
+        <a [ngClass]="{disabled: currentPage===0}" (click)="jumpToFirst()" class="leftArrow">&#xab;</a>
+    </div>
+    <div>
+        <a [ngClass]="{disabled: currentPage===0}" (click)="prevPage()" class="leftArrow">&#x2039;</a>
     </div>
     <ng-container *ngFor="let video of videos, let i = index">
         <ng-container *ngIf="showNumber(i)">
             <div [ngClass]="{active: currentPage===i}" *ngIf="checkWindow(i)">
-                <a (click)="changePage(i)">{{i+1}}</a>
+                    <a (click)="changePage(i)">{{i+1}}</a>
             </div>
         </ng-container>
     </ng-container>
     <div>
-        <a [ngClass]="{disabled: checkLast()}" (click)="nextPage()">Next</a>
+        <a [ngClass]="{disabled: checkLast()}" (click)="nextPage()" class="righttArrow">&#x203A;</a>
+    </div> 
+    <div>
+        <a [ngClass]="{disabled: checkLast()}" (click)="jumpToLast()" class="righttArrow">&#xbb;</a>
     </div> 
 </div>

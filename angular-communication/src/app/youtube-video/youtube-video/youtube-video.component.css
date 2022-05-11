@@ -5,11 +5,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 .container{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .card{
     margin: 0;

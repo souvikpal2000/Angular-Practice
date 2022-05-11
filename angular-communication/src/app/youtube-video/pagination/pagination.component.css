@@ -3,9 +3,16 @@
     justify-content: center;
     align-items: center;
 }
-.pagination div{
-    border: 1px solid #4183C4;
-    padding: 0.5rem 1rem 0.5rem 1rem;
+.pagination div {
+    padding: 1rem;
+}
+.pagination div a{
+    /* border: 1px solid #4183C4; */
+    padding: 0.4rem;
+}
+.leftArrow, .righttArrow{
+    font-size: 2.5rem;
+    font-weight: bolder;
 }
 a{
     cursor: pointer;
@@ -16,6 +23,7 @@ a{
 }
 .active{
     background-color: #4183C4;
+    border-radius: 5rem;
 }
 .active a{
     color: white;

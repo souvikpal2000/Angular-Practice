@@ -53,4 +53,17 @@ export class PaginationComponent implements OnInit {
   checkWindow = (i:number) => {
     return Math.abs(this.currentPage - i) < 2
   }
+
+  jumpToFirst = () => {
+    this.currentPage = 0;
+    this.start = (this.currentPage * 3);
+    this.sender.emit(this.start);
+  }
+
+  jumpToLast = () => {
+    this.currentPage = Math.ceil(this.videos.length/3) - 1;
+    console.log
+    this.start = (this.currentPage * 3);
+    this.sender.emit(this.start);
+  }
 }

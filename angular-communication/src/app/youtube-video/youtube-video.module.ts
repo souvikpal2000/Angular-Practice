@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { PlayVideoModalComponent } from './play-video-modal/play-video-modal.component';
 import { DeferLoadModule } from '@trademe/ng-defer-load';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     ModalComponent,
     PlayVideoModalComponent,
     PaginationComponent,
+    SearchBarComponent,
   ],
   imports: [
     CommonModule,

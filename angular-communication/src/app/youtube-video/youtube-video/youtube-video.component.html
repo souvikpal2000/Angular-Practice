@@ -1,6 +1,7 @@
 <div *ngIf="checkLength(); then showVideos else dontShow"></div>
 <ng-template #showVideos>
     <div class="container">
+        <app-search-bar></app-search-bar>
         <div class="videos">
             <ng-container *ngFor="let video of videos; let i=index">
                 <div class="ui card" *ngIf="i>=start && i<=end">
