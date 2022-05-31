@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { DataService } from 'src/app/data.service';
 import { ReaUpdDelVideoService } from '../rea-upd-del-video.service';
 import { Youtube } from '../youtube';
 
@@ -22,6 +21,8 @@ export class YoutubeVideoComponent implements OnInit {
 
   start = 0;
   end = 2;
+
+  query = '';
 
   constructor(private service: ReaUpdDelVideoService, private cookie: CookieService, private el: ElementRef) { }
 
@@ -83,4 +84,8 @@ export class YoutubeVideoComponent implements OnInit {
     this.start = start;
     this.end = this.start + 2;
   }
-}
+
+  searchVideo = (search: string) => {
+    this.query = search;
+  }
+} 

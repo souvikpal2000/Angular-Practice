@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { ReaUpdDelVideoService } from '../rea-upd-del-video.service';
 import { Youtube } from '../youtube';
 
@@ -7,7 +7,7 @@ import { Youtube } from '../youtube';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnChanges {
 
   videos: Youtube[]=[];
   
@@ -17,10 +17,32 @@ export class PaginationComponent implements OnInit {
 
   @Output() sender = new EventEmitter();
 
+  @Input() query = '';
+
   constructor(private service: ReaUpdDelVideoService) { }
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
+  //   this.videos = this.service.videos;
+  //   //console.log(this.filteredData)
+  // }
+
+  ngOnChanges(changes: SimpleChanges) {
     this.videos = this.service.videos;
+    this.currentPage = 0;
+    this.start = this.currentPage + (this.currentPage * 3);
+    this.sender.emit(this.start);
+    if(this.videos.length == 0){
+      this.videos = [];
+      return;
+    }
+    if(!this.query){
+      this.videos = this.videos;
+      return;
+    }
+    this.query = this.query.toLowerCase();
+    this.videos = this.videos.filter((data) => {
+      return JSON.stringify(data).toLowerCase().includes(this.query);
+    });
   }
 
   prevPage = () => {
@@ -39,13 +61,13 @@ export class PaginationComponent implements OnInit {
     this.sender.emit(this.start);
   }
   showNumber = (i:number) => {
-    if(i < Math.ceil(this.service.videos.length/3)){
+    if(i < Math.ceil(this.videos.length/3)){
       return true;
     }
     return false;
   }
   checkLast = () => {
-    if(this.currentPage < Math.ceil(this.service.videos.length/3)-1){
+    if(this.currentPage < Math.ceil(this.videos.length/3)-1){
       return false;
     }
     return true;
@@ -62,7 +84,6 @@ export class PaginationComponent implements OnInit {
 
   jumpToLast = () => {
     this.currentPage = Math.ceil(this.videos.length/3) - 1;
-    console.log
     this.start = (this.currentPage * 3);
     this.sender.emit(this.start);
   }

@@ -5,7 +5,7 @@
     <div>
         <a [ngClass]="{disabled: currentPage===0}" (click)="prevPage()" class="leftArrow">&#x2039;</a>
     </div>
-    <ng-container *ngFor="let video of videos, let i = index">
+    <ng-container *ngFor="let video of videos; let i = index">
         <ng-container *ngIf="showNumber(i)">
             <div [ngClass]="{active: currentPage===i}" *ngIf="checkWindow(i)">
                     <a (click)="changePage(i)">{{i+1}}</a>

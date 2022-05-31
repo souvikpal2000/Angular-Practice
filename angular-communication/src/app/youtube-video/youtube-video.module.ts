@@ -11,6 +11,7 @@ import { PlayVideoModalComponent } from './play-video-modal/play-video-modal.com
 import { DeferLoadModule } from '@trademe/ng-defer-load';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     PlayVideoModalComponent,
     PaginationComponent,
     SearchBarComponent,
+    SearchPipe,
   ],
   imports: [
     CommonModule,
