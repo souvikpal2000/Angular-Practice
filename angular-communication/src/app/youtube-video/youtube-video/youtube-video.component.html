@@ -6,7 +6,7 @@
             <ng-container *ngFor="let video of videos | search: query; let i=index;">
                 <div class="ui card" *ngIf="i>=start && i<=end">
                     <div class="image">
-                        <a class="ui blue ribbon label" [ngClass]="video.type">{{video.type}}</a>
+                        <a class="ui blue ribbon label">{{video.type}}</a>
                         <img [src]="video.image || 'assets/images/placeholder-image.jpg'">
                     </div>
                     <div class="content">
